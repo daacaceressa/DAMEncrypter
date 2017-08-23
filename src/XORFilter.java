@@ -1,5 +1,6 @@
 
 public class XORFilter extends SimpleFilter<Message, Message> {
+    public static final String NAME = "XORFilter";
     public XORFilter(Pipe<Message> input, Pipe<Message> output) {
         super(input, output);
     }

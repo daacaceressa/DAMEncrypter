@@ -17,8 +17,10 @@ public class DAMGenerator extends Generator<Message> {
     @Override
     public void generateInto(Pipe<Message> pipe) {
         Scanner sc = new Scanner( new InputStreamReader(System.in) );
-        System.out.print( "Introduzca el mensaje a cifrar: " ); String message = sc.nextLine();
-        System.out.print( "Introduzca la llave: " );            String typed_key = sc.nextLine();
+        System.out.print( "Enter message: " );
+        String message = sc.nextLine();
+        System.out.print( "Enter key: " );
+        String typed_key = sc.nextLine();
         int key = get_key( typed_key );
 
         for ( char text : message.toCharArray() ) {

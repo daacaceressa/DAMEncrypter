@@ -1,32 +1,50 @@
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DAMRunner {
     public static void main(String[] args) {
 
-        // create pipes
-        final Pipe<Message> genToXOR = new PipeImpl<Message>();
-        final Pipe<Message> xorToReverse = new PipeImpl<Message>();
-        final Pipe<Message> reverseToSwap = new PipeImpl<Message>();
-        final Pipe<Message> swapToComplement = new PipeImpl<Message>();
-        final Pipe<Message> complementToOut = new PipeImpl<Message>();
-
+        Scanner sc = new Scanner( new InputStreamReader(System.in) );
+        System.out.print( "encrypt?: " );
+        String message = sc.nextLine();
+        ArrayList<String> architectureOrder;
+        if(message.equals("Y")) {
+            architectureOrder = getFiltersForDAMEncryption();
+        } else {
+            architectureOrder = getFiltersForDAMDecryption();
+        }
         // create components that use the pipes
-        final Generator<Message> generator = new DAMGenerator(genToXOR);
-        final Filter<Message, Message> reverseFilter = new ReverseFilter(genToXOR, complementToOut);
-        /*final Filter<Message, Message> xorFilter = new XORFilter(genToXOR, xorToReverse);
-        final Filter<Message, Message> reverseFilter = new ReverseFilter(xorToReverse, reverseToSwap);
-        final Filter<Message, Message> swapFilter = new SwapFilter(reverseToSwap, swapToComplement);
-        final Filter<Message, Message> complementFilter = new ComplementFilter(swapToComplement, complementToOut);*/
-        final Sink<Message> sink = new DAMSink(complementToOut);
+        final Architecture DAMArchitecture = new Architecture(architectureOrder);
+        final Generator<Message> generator = new DAMGenerator(DAMArchitecture.getStartingPipe());
+        final Sink<Message> sink = new DAMSink(DAMArchitecture.getEndingPipe());
 
         // start all components
         generator.start();
-        reverseFilter.start();
-        /*xorFilter.start();
-        reverseFilter.start();
-        swapFilter.start();
-        complementFilter.start();*/
+        DAMArchitecture.start();
         sink.start();
 
         //System.out.println("runner finished");
+    }
+
+    public static ArrayList<String> getFiltersForDAMEncryption(){
+        ArrayList<String> filtersOrder = new ArrayList<>();
+        filtersOrder.add(XORFilter.NAME);
+        filtersOrder.add(ReverseFilter.NAME);
+        filtersOrder.add(SwapFilter.NAME);
+        filtersOrder.add(ComplementFilter.NAME);
+        return filtersOrder;
+    }
+
+    public static ArrayList<String> getFiltersForDAMDecryption(){
+        ArrayList<String> filtersOrder = new ArrayList<>();
+        filtersOrder.add(ComplementFilter.NAME);
+        filtersOrder.add(SwapFilter.NAME);
+        filtersOrder.add(ReverseFilter.NAME);
+        filtersOrder.add(XORFilter.NAME);
+        return filtersOrder;
     }
 }

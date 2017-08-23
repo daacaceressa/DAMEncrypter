@@ -1,5 +1,6 @@
 
 public class ReverseFilter extends SimpleFilter<Message, Message> {
+    public static final String NAME = "ReverseFilter";
     public ReverseFilter(Pipe<Message> input, Pipe<Message> output) {
         super(input, output);
     }
