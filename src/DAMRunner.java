@@ -3,6 +3,7 @@ import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class DAMRunner {
@@ -40,11 +41,8 @@ public class DAMRunner {
     }
 
     public static ArrayList<String> getFiltersForDAMDecryption(){
-        ArrayList<String> filtersOrder = new ArrayList<>();
-        filtersOrder.add(ComplementFilter.NAME);
-        filtersOrder.add(SwapFilter.NAME);
-        filtersOrder.add(ReverseFilter.NAME);
-        filtersOrder.add(XORFilter.NAME);
+        ArrayList<String> filtersOrder = getFiltersForDAMEncryption();
+        Collections.reverse(filtersOrder);
         return filtersOrder;
     }
 }
