@@ -1,3 +1,4 @@
+package PipesAndFilter;
 public abstract class Generator<T> extends ThreadedRunner {
     protected Pipe<T> output;
 

@@ -1,4 +1,4 @@
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+import PipesAndFilter.*;
 
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;

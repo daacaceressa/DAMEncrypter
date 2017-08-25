@@ -1,3 +1,4 @@
+package PipesAndFilter;
 public abstract class Filter<I, O> extends ThreadedRunner {
 	protected Pipe<I> input;
 	protected Pipe<O> output;

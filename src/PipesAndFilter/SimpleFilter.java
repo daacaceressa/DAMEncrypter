@@ -1,3 +1,4 @@
+package PipesAndFilter;
 public abstract class SimpleFilter<I, O> extends Filter<I, O> {
     public SimpleFilter(Pipe<I> input, Pipe<O> output) {
         super(input, output);

@@ -1,4 +1,3 @@
-
 public class Message {
     int key, text;
     public Message( ) {}

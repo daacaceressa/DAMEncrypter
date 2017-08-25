@@ -1,3 +1,4 @@
+package PipesAndFilter;
 
 public class ExampleGenerator extends Generator<Integer> {
     public ExampleGenerator(Pipe<Integer> output) {

@@ -1,3 +1,4 @@
+package PipesAndFilter;
 public interface Pipe<T> {
     public boolean put(T obj);
     public T nextOrNullIfEmptied() throws InterruptedException;

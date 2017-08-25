@@ -1,3 +1,4 @@
+package PipesAndFilter;
 public abstract class SimpleSink<T> extends Sink<T> {
     public SimpleSink(Pipe<T> input) {
         super(input);

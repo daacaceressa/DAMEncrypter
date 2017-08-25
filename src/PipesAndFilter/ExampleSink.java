@@ -1,3 +1,4 @@
+package PipesAndFilter;
 
 public class ExampleSink extends Sink<String> {
     public ExampleSink(Pipe<String> input) {

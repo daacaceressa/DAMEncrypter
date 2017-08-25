@@ -1,4 +1,4 @@
-
+import PipesAndFilter.*;
 public class ComplementFilter extends SimpleFilter<Message, Message> {
     public static final String NAME = "ComplementFilter";
     public ComplementFilter(Pipe<Message> input, Pipe<Message> output) {

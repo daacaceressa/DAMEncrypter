@@ -1,4 +1,4 @@
-
+import PipesAndFilter.*;
 public class DAMSink extends Sink<Message> {
     public DAMSink(Pipe<Message> input) {
         super(input);

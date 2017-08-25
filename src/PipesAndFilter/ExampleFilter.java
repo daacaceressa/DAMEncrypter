@@ -1,3 +1,4 @@
+package PipesAndFilter;
 
 public class ExampleFilter extends SimpleFilter<Integer, String> {
     public ExampleFilter(Pipe<Integer> input, Pipe<String> output) {

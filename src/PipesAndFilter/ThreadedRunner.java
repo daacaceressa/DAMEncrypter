@@ -1,3 +1,4 @@
+package PipesAndFilter;
 public abstract class ThreadedRunner implements Runnable {
 	private boolean isStarted = false;
 

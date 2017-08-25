@@ -1,4 +1,4 @@
-
+import PipesAndFilter.*;
 public class SwapFilter extends SimpleFilter<Message, Message> {
     public static final String NAME = "SwapFilter";
     public SwapFilter(Pipe<Message> input, Pipe<Message> output) {

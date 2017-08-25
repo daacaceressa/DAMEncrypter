@@ -1,3 +1,4 @@
+package PipesAndFilter;
 public abstract class Sink<T> extends ThreadedRunner {
     protected Pipe<T> input;
 
