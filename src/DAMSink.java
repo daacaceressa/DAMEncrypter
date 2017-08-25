@@ -9,7 +9,10 @@ public class DAMSink extends Sink<Message> {
         try {
             Message in;
             while ((in = pipe.nextOrNullIfEmptied()) != null) {
-                System.out.print( (char)in.text );
+            	String currentText = DAMApplet.resultField.getText();
+				currentText = currentText + (char)in.text;
+				DAMApplet.resultField.setText(currentText);
+//                System.out.print( (char)in.text );
                 delayForDebug(300);
             }
             //System.out.println("sink finished");

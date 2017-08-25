@@ -1,5 +1,6 @@
 import PipesAndFilter.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 // This class manages the structure of the pipe and filter architecture.
@@ -7,7 +8,7 @@ public class Architecture {
     private ArrayList<Filter<Message,Message>> filters;
     private ArrayList<Pipe<Message>> pipes;
 
-    public Architecture(ArrayList<String> fromFilters) {
+    public Architecture(List<String> fromFilters) {
         filters = new ArrayList<>();
         pipes = new ArrayList<>();
         // Add all pipes for the given filters, including the ending pipe.

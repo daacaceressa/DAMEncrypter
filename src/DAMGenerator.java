@@ -3,8 +3,13 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class DAMGenerator extends Generator<Message> {
-    public DAMGenerator(Pipe<Message> output) {
-        super(output);
+	private String message;
+	private String typed_key;
+    
+    public DAMGenerator(Pipe<Message> output, String message, String key) {
+    	super(output);
+    	this.message = message;
+    	this.typed_key = key;
     }
 
     public int get_key( String s ) {
@@ -17,11 +22,6 @@ public class DAMGenerator extends Generator<Message> {
 
     @Override
     public void generateInto(Pipe<Message> pipe) {
-        Scanner sc = new Scanner( new InputStreamReader(System.in) );
-        System.out.print( "Enter message: " );
-        String message = sc.nextLine();
-        System.out.print( "Enter key: " );
-        String typed_key = sc.nextLine();
         int key = get_key( typed_key );
 
         for ( char text : message.toCharArray() ) {
