@@ -10,7 +10,7 @@ public class ComplementFilter extends SimpleFilter<Message, Message> {
 
     @Override
     protected Message transformOne(Message in) {
-        int text = (~in.text) & ASCII;
+        int text = (~in.text) & MASK_ALPHABET;
         Message out = new Message( in.key, text );
         return out;
     }

@@ -15,7 +15,7 @@ public class SwapFilter extends SimpleFilter<Message, Message> {
         right = in.text & 7;
         middle = in.text & (1<<3);
         text = (right<<4) | middle | left;
-        Message out = new Message( in.key, text & ASCII );
+        Message out = new Message( in.key, text & MASK_ALPHABET );
         return out;
     }
 }

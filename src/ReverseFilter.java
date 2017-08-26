@@ -14,7 +14,7 @@ public class ReverseFilter extends SimpleFilter<Message, Message> {
         for( int i = 0; i < 7; ++i ) {
             text |= ((in.text>>i) & 1)<<(6-i);
         }
-        Message out = new Message( in.key, text & ASCII );
+        Message out = new Message( in.key, text & MASK_ALPHABET );
         return out;
     }
 }

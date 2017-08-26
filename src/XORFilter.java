@@ -8,7 +8,7 @@ public class XORFilter extends SimpleFilter<Message, Message> {
 
     @Override
     protected Message transformOne(Message in) {
-        int text = (in.text ^ in.key) & ASCII;
+        int text = (in.text ^ in.key) & MASK_ALPHABET;
         Message out = new Message( in.key, text );
         return out;
     }

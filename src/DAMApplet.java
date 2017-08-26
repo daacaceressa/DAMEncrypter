@@ -58,6 +58,7 @@ public class DAMApplet {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("DAM cipher");
 		frame.setBounds(100, 100, 782, 367);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -97,6 +98,8 @@ public class DAMApplet {
 		keyTextField.setColumns(10);
 		
 		resultField = new JTextArea();
+		resultField.setLineWrap(true);
+		resultField.setWrapStyleWord(true);
 		resultField.setText("Result");
 		resultField.setEditable(false);
 		resultField.setBounds(505, 19, 229, 298);
@@ -161,9 +164,9 @@ public class DAMApplet {
 		Generator<Message> generator = new DAMGenerator(encryptArchitecture.getStartingPipe(), message, key);
 		Sink<Message> sink = new DAMSink(encryptArchitecture.getEndingPipe());
 
-        // start all components
-        generator.start();
-        encryptArchitecture.start();
-        sink.start();
+    // start all components
+    generator.start();
+    encryptArchitecture.start();
+    sink.start();
 	}
 }

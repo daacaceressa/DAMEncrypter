@@ -17,7 +17,7 @@ public class DAMGenerator extends Generator<Message> {
         for( int i = 0; i < s.length(); ++i ) {
             key += s.charAt(i);
         }
-        return key % 128;
+        return key % SimpleFilter.SIZE_ALPHABET;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class DAMGenerator extends Generator<Message> {
         int key = get_key( typed_key );
 
         for ( char text : message.toCharArray() ) {
-            pipe.put( new Message( key, text ) );
+            pipe.put( new Message( key, SimpleFilter.getIndex(text) ) );
             //System.out.println("generated " + Integer.toString(i));
             delayForDebug(200);
         }
