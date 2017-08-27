@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
 
 public class DAMApplet {
 
@@ -72,38 +74,50 @@ public class DAMApplet {
 		DefaultListModel architecture = new DefaultListModel<>();
 
 		JList filtersList = new JList();
+		filtersList.setBorder(new LineBorder(Color.GRAY));
 		filtersList.setBounds(24, 23, 135, 139);
 		filtersList.setModel(filters);
 		frame.getContentPane().add(filtersList);
-		
-		JList architectureList = new JList();
-		architectureList.setBounds(280, 23, 135, 139);
-		frame.getContentPane().add(architectureList);
 		
 		JLabel lblNewLabel = new JLabel("Message:");
 		lblNewLabel.setBounds(24, 203, 100, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JTextPane messageTextField = new JTextPane();
-		messageTextField.setBounds(107, 203, 257, 69);
-		frame.getContentPane().add(messageTextField);
-		
 		JLabel lblNewLabel_1 = new JLabel("Key:");
 		lblNewLabel_1.setBounds(24, 288, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
+		
+		JScrollPane messageScrollPane = new JScrollPane();
+		messageScrollPane.setBounds(107, 203, 257, 69);
+		frame.getContentPane().add(messageScrollPane);
+		
+		JTextArea messageTextField = new JTextArea();
+		messageScrollPane.setViewportView(messageTextField);
+		messageTextField.setWrapStyleWord(true);
+		messageTextField.setLineWrap(true);
 		
 		JTextField keyTextField = new JTextField();
 		keyTextField.setBounds(107, 283, 257, 29);
 		frame.getContentPane().add(keyTextField);
 		keyTextField.setColumns(10);
 		
+		JScrollPane architectureScrollPane = new JScrollPane();
+		architectureScrollPane.setBounds(268, 23, 135, 139);
+		frame.getContentPane().add(architectureScrollPane);
+		
+		JList architectureList = new JList();
+		architectureScrollPane.setViewportView(architectureList);
+		
+		JScrollPane resultScrollPane = new JScrollPane();
+		resultScrollPane.setBounds(500, 23, 232, 294);
+		frame.getContentPane().add(resultScrollPane);
+		
 		resultField = new JTextArea();
+		resultScrollPane.setViewportView(resultField);
 		resultField.setLineWrap(true);
 		resultField.setWrapStyleWord(true);
 		resultField.setText("Result");
 		resultField.setEditable(false);
-		resultField.setBounds(505, 19, 229, 298);
-		frame.getContentPane().add(resultField);
 		
 		JButton addFilterButton = new JButton("Add");
 		addFilterButton.addActionListener(new ActionListener() {
