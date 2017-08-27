@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="S-Team_C1_Code:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/S_Team_C1_Code_jar</output-path>
+    <root id="archive" name="S-Team_C1_Code.jar">
+      <element id="module-output" name="S-Team_C1_Code" />
+    </root>
+  </artifact>
+</component>
